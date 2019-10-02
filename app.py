@@ -4,8 +4,10 @@ from bson.objectid import ObjectId
 import os
 
 
-host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/Playlister')
-client = MongoClient(host=f'{host}?retryWrites=false')
+
+
+host = os.environ.get('mongolab-tetrahedral-01337', 'mongodb://localhost:27017/Playlister')
+client = MongoClient(host=host)
 db = client.get_default_database()
 playlists = db.playlists
 
