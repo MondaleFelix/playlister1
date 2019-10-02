@@ -18,5 +18,22 @@ def playlists_index():
 	return render_template("playlists_index.html", playlists = playlists.find())
 
 
+@app.route("/playlists/new")
+def playlists_new():
+	# Create a new playlists
+	return render_template("playlists_new.html")
+
+@app.route("/playlists", methods=["POST"])
+def playlists_submit()
+	playlist = {
+		'title' : request.form.get('title'),
+		'description' : request.form.get('description'),
+		'videos': request.form.get('videos').split()
+	}
+	playlists.insert_one(playlist)
+	# Submit a new playlists
+	return redirect(url_for('playlists_index'))
+
+
 if __name__ == '__main__':
     app.run(debug=True)
